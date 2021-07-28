@@ -1,0 +1,81 @@
+<html>
+  <head>
+  	<title>LATEST INFO</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="../static/website-menu-12/css/style.css">
+  <style>
+    h2{
+      padding-top:2%;
+      font-style: bold;
+
+    }
+    .d2{
+      display: inline;
+    }
+
+    .d1{
+      background-color:black;
+      margin-top:50px;
+      margin-left:160px;
+      margin-right:160px;
+      margin-bottom:50px;
+      border-radius:20px;
+      text-shadow: 2cm;
+      border-style: groove;
+      border-color:sandybrown;
+    }
+    .text{
+      color: white;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-size: 25;
+    }
+    .card{
+          margin-top:25px;
+          display: inline-block;
+          border-color: #c23dff;
+          border-width: 1;
+          margin-left:35px;
+    }       
+  </style>
+	</head>
+    <body>
+      {% include 'navbar.html'%}
+      {% block nav %}
+      {% endblock %}
+      <center>
+        <div class='d1'>
+        <h2 class='text'>Type Your query in the search box and find some latest News and Articles realted to it.....</h2>
+        <form method='POST' action="/av_articles/">
+          <div class="container">
+              <input type="text"  name='query' class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" /><br>
+              <button type="submit" class="btn btn-outline-primary" value='submit'>search</button>
+            </div>
+          </form>  
+        </div>
+      </center><br><br>
+    <center>
+      <div style="background-color: black;"><h1 style="color:white;">Latest News about Tokyo Olympics</h1></div>
+    </center>  
+    <div class="row">
+      {% for i in range(l) %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src={{img_url[i]}} alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{source[i]}}</h5>
+              <p class="card-text">{{headline[i]}}</p>
+              <a href={{urls[i]}} class="btn btn-primary">Read Article..</a>
+            </div>
+          </div>  
+      {% endfor %} 
+    </div>
+
+       
+    </body>
+</html>

@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	      <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	      <link rel="stylesheet" href="../static/website-menu-12/css/style.css">
+        <style>
+          .card{
+            margin-top:25px;
+            display: inline-block;
+            border-color: #c23dff;
+            border-width: 1;
+            margin-left:45px;
+          }
+          h2{
+            font-style: italic;
+            color:white;
+          }
+          body{
+            background-image: linear-gradient(black,white) ;
+          }
+          .card-img-top {
+            width: 100%;
+            height: 15vw;
+            object-fit: cover;
+            }
+          .header{
+            display: inline;
+          }
+        </style>
+    </head>
+    
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span> Menu
+          </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="/Articles/">Articles</a>
+                  <a class="dropdown-item" href="#">Books</a>
+                  <a class="dropdown-item" href="#">Movie</a>
+                </div>
+              </li>
+              <li class="nav-item"><a href="#" class="nav-link">Catalog</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <center>
+        <div class='header'>
+        <h2>Here are the available Latest articles based on your search</h2>
+        <form method='POST' action='/analysis/'>
+          <input type="hidden" name="query" value={{query}} />
+          <button type="submit" class="btn btn-success" >Analysis</button>
+        </form>
+        </div>
+      </center>  
+        <div class="row">
+        {% for i in range(l) %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src={{img_url[i]}} alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{source[i]}}</h5>
+              <p class="card-text">{{headline[i]}}</p>
+              <a href={{urls[i]}} class="btn btn-primary">Read Article..</a>
+            </div>  
+        </div>
+        {% endfor %}  
+      </div>
+        <script src="../static/website-menu-12/js/jquery.min.js"></script>
+        <script src="../static/website-menu-12/js/popper.js"></script>
+        <script src="../static/website-menu-12/js/bootstrap.min.js"></script>
+        <script src="../static/website-menu-12/js/main.js"></script>    
+    </body>
+</html>
